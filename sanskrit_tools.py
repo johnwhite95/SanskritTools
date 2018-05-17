@@ -1,26 +1,20 @@
-
-# coding: utf-8
-
-# In[482]:
-
-
 import pandas as pd
 
 D_vowel = [
-    "अ", "आ", "इ", "ई", "उ", "ऊ", "ए", "ऐ", "ओ",
+    " ", "अ", "आ", "इ", "ई", "उ", "ऊ", "ए", "ऐ", "ओ",
     "औ", "ऋ", "ॠ", "ऌ", "ॡ", "ं", "ः"
 ]
 R_vowel = [
-    "a", "ā", "i", "ī", "u", "ū", "e", "ai", "o",
+    " ", "a", "ā", "i", "ī", "u", "ū", "e", "ai", "o",
     "au", "ṛ", "ṝ", "ḷ", "ḹ", "aṃ", "ḥ"
 ]
 
 dia_d = [
-    " ", "ि", "ु", "ॢ"
+    "ा", "ी", "ि", "ु", "ू", "ृ", "ॄ", "ॢ", "ॣ", "े", "ै", "ो", "ौ", "्"
 ]
 
 dia_r = [
-    "a", "i", "u", "ḷ"
+    "ā", "ī", "i", "u", "ū", "r", "ṛ", "ḷ", "ḹ", "e", "ai", "o", "au", ""
 ]
 
 D_cons = [
@@ -29,13 +23,31 @@ D_cons = [
     "ध", "न", "प", "फ", "ब", "भ", "म", "य", "र",
     "ल", "व", "श", "ष", "स", "ह"
 ]
+
 R_cons = [
+    "ka", "kha", "ga", "gha", "ṅa", "ca", "cha",
+    "ja", "jha", "ña", "ṭa", "ṭha", "ḍa", "ḍha",
+    "ṇa", "ta", "tha", "da", "dha", "na", "pa",
+    "pha", "ba", "bha", "ma", "ya", "ra", "la",
+    "va", "śa", "ṣa", "sa", "ha"
+]
+
+R_cons_na = [
     "k", "kh", "g", "gh", "ṅ", "c", "ch",
     "j", "jh", "ñ", "ṭ", "ṭh", "ḍ", "ḍh",
     "ṇ", "t", "th", "d", "dh", "n", "p",
     "ph", "b", "bh", "m", "y", "r", "l",
     "v", "ś", "ṣ", "s", "h"
 ]
+
+# combine all devanagari characters and diacritics
+all_d = D_cons + D_vowel + dia_d
+# combine romanizations of all devanagari characters and diacritics
+all_r = R_cons + R_vowel + dia_r
+# combine romanizations of all devanagari characters and diacritics, where the consonant characters
+# have the implied *a dropped
+all_na = R_cons_na + R_vowel + dia_r
+
 
 pairs11 = [
     ["a", "a"], ["a", "i"], ["i", "ī"], ["i", "a"], 
@@ -106,37 +118,7 @@ relationship_nouns = ["pitṛ", "matṛ"]
 persons = ["third", "second", "first"]
 pres_ten_end = ["ati", "asi", "āmi", "-", "-", "āvaḥ", 
                 "anti", "-", "āmaḥ"]
-
-
-# In[430]:
-
-
-def sandhi(x, y):
-    check11 = [x[len(x)-1:], y[:1]]
-    check21 = [x[len(x)-2:], y[:1]]
-    check22 = [x[len(x)-2:], y[:2]]
-    
-    if check11 in pairs11:
-        location = pairs11.index(check11)
-        between = joins11[location]
-        return(x[:len(x)-1]+between+y[1:])
-    
-    elif check21 in pairs21:
-        location = pairs21.index(check21)
-        between = joins21[location]
-        return(x[:len(x)-2] + between + y[1:])
-    
-    elif check22 in pairs22:
-        location = pairs22.index(check22)
-        between = joins22[location]
-        return(x[:len(x)-2] + between + y[2:])
-    
-    else:
-        return(x + y)
-
-
-# In[431]:
-
+                
 
 def list_declen(without_stem, declist):
     singular = []
@@ -150,10 +132,6 @@ def list_declen(without_stem, declist):
                              'dual':dual, 'plural':plural}).reindex(
                             ['case', 'singular', 'dual', 'plural'], axis=1)  
     return(finished)
-
-
-# In[432]:
-
 
 def decline(noun, gender):
     stem_cut = noun[:len(noun)-1]
@@ -176,67 +154,6 @@ def decline(noun, gender):
         output = "noun not recognized"
     return(output)
 
-
-# In[433]:
-
-
-decline("phala", "neut")
-
-
-# In[434]:
-
-
-def pronouns(gender):
-    persons = ["third", "second", "first", "interr"]
-    if gender == "masc":
-        first = ['sa/saḥ', 'tvam', 'aham', 'kaḥ']
-        second = ['tam', 'tvām', 'mām', 'kam']
-        third = ['tam', 'tvām', 'mām', 'kam']
-        finished_sing = pd.DataFrame({'person':persons, 'nom':first, 'voc':second,
-                                'acc':third}).reindex(
-                                ['person', 'nom', 'voc', 'acc'], axis=1)
-    elif gender == "neut":
-        first = ['tat', 'tvam', 'aham', 'kim']
-        second = ['tat', 'tvām', 'mām', 'kim']
-        third = ['tat', 'tvām', 'mām', 'kim']
-        finished_sing = pd.DataFrame({'person':persons, 'nom':first, 'voc':second,
-                                'acc':third}).reindex(
-                                ['person', 'nom', 'voc', 'acc'], axis=1)  
-        
-    return(finished_sing)
-
-
-# In[435]:
-
-
-pronouns("neut")
-
-
-# In[436]:
-
-
-def conjugate(verb):
-    verb_cut = verb[:len(verb)-1]
-    first = []
-    second = []
-    third = []
-    for i in range(0, 3):
-        first.append(verb_cut + pres_ten_end[i])
-    for i in range(3, 6):
-        second.append(verb_cut + pres_ten_end[i])
-    for i in range(6, 9):
-        third.append(verb_cut + pres_ten_end[i])
-    finished = pd.DataFrame({'person':persons, 'first':first, 'second':second,
-                            'third':third}).reindex(
-                            ['person', 'first', 'second', 'third'], axis=1)
-    return(finished)
-
-conjugate("gaccha")
-
-
-# In[437]:
-
-
 """maybe include an option for clusters"""
 def devanagari(kind):
     if kind == "vowels":
@@ -251,30 +168,37 @@ def devanagari(kind):
     else:
         return("error: invalid argument")
 
-
-# In[438]:
-
-
-devanagari("vowels")
-
-
-# In[483]:
-
-
-def romanize(text):
-    out = []
-    dev = D_vowel + D_cons + dia_d
-    rom = R_vowel + R_cons + dia_r
+# code to switch out consonant syllables in form *a with just *, where the is a diacritic vowel
+# also concatenates and nicely outputs the final text
+# takes arguments for the two lists of characters as well as the length of the lists
+def switch(split_characters, length_of):
+    for i in range(0, length_of):
+        # if a diacritic vowel comes next, replace current consonant with one not ending in a
+        if split_characters[0][i] in dia_d:
+            split_characters[1][i-1] = all_na[all_r.index(split_characters[1][i-1])]
+    # join all characters together as a continuous stream of text; first the devanagari, then the
+    # transliteration
+    return(''.join(str(x) for x in split_characters[0]) + ' → ' + ''.join(str(x) for x in split_characters[1]))
+    
+# code to parse through the text, split into individual characters and find corresponding locations in arrays
+# between devanagari and roman characters
+def parse(text):
+    # vectors for storing romanized and devanagari output
+    output_r = []
+    output_d = []
+    # store locations of diacritic characters
+    locations = []
     for i in range(0, len(text)):
-        location = text[i]
-        out.append(rom[dev.index(text[i])])
-    return(''.join(str(x) for x in out))
+        place = all_d.index(text[i])
+        #locations.append(place)
+        output_d.append(all_r[place])
+        output_r.append(text[i])
+    return([output_r, output_d])
 
-
-# In[485]:
-
-
-romanize("प")
-
-
-#stuff
+# make parse and switch functions work together
+def romanize(dev_text):
+    return(switch(parse(dev_text), len(dev_text)))
+    
+# some examples
+# decline("phala", "neut")
+# romanize("कठोपनिषद")
