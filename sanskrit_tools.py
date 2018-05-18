@@ -205,22 +205,28 @@ index = ['First','Second','Third']
 def conjugate(verb, verb_class):
     #vowels = ["a", "ī"]
     #guna = ["a", "e"]
+
+    #case for class I verbs
     if verb_class == "1" or verb_class == "I":
 
+        #database of class I conjugations
         first = ["āmi", "āvaḥ", "āmaḥ"]
         second = ["asi", "athaḥ", "atha"]
         third = ["ati", "ataḥ", "anti"]
 
+        #split verb into list for easy parsing
         splitted = list(verb)
 
+        #store vowels and their guna
         vowels = ["a", "ī", "ā", "i", "u", "ū", "ṛ", "ṝ", "ḷ"]
         guna = ["a", "e", "a", "e", "o", "o", "ar", "ar", "al"]
-        long = ["ī", "ā", "ū", "ṝ", "ḹ"]
-        short = ["a", "i", "u", "ṛ", "ḷ"]
 
-        print(splitted)
-        print(splitted[len(splitted)-2:][0])
-        if splitted[len(splitted)-2:][0] in long and splitted[len(splitted)-1:][0] in R_cons_na:
+        #distinguish long and short vowels
+        long_vow = ["ī", "ā", "ū", "ṝ", "ḹ"]
+        short_vow = ["a", "i", "u", "ṛ", "ḷ"]
+
+        #check case for long vowel prior to consonant
+        if splitted[len(splitted)-2:][0] in long_vow and splitted[len(splitted)-1:][0] in R_cons_na:
             together = ''.join(str(x) for x in splitted)
             for i in range(0, len(first)):
                 first[i] = together + first[i]
@@ -228,13 +234,14 @@ def conjugate(verb, verb_class):
                 third[i] = together + third[i]
             return(pd.DataFrame([first, second, third], index=index, columns=columns))
 
-        if splitted[len(splitted)-2:][0] in long and splitted[len(splitted)-1:][0] in R_cons_na
-
+        #otherwise, treat as the other cases
         else:
+            #strengthen vowel to guna
             for i in range(0, len(splitted)):
                 if splitted[i] in vowels:
                     splitted[i] = guna[vowels.index(splitted[i])]
 
+            # check for and appropriately change verbs with vowels e, o, and ai
             if splitted[len(splitted)-1:][0] == "e":
                 splitted[len(splitted)-1:] = "ay"
             elif splitted[len(splitted)-1:][0] == "o":
@@ -243,27 +250,31 @@ def conjugate(verb, verb_class):
                 splitted[len(splitted)-1:] = "āy"
             together = ''.join(str(x) for x in splitted)
 
+            #apply the verb endings
             for i in range(0, len(first)):
                 first[i] = together + first[i]
                 second[i] = together + second[i]
                 third[i] = together + third[i]
+            # return the verbs
             return(pd.DataFrame([first, second, third], index=index, columns=columns))
 
+    #check for class VI verbs
+    # WARNING: does not yet deal with sandhi
     if verb_class == "6" or verb_class == "VI":
 
-        first = ["āmi", "āvaḥ", "āmaḥ"]
-        second = ["āsi", "āthaḥ", "ātha"]
-        third = ["āti", "ātaḥ", "ānti"]
-        chopped = verb[:len(verb)-3]
+        first = ["ami", "avaḥ", "amaḥ"]
+        second = ["asi", "athaḥ", "atha"]
+        third = ["ati", "ataḥ", "anti"]
+        #chopped = verb[:len(verb)-3]
 
         for i in range(0, len(first)):
-            first[i] = chopped + first[i]
-            second[i] = chopped + second[i]
-            third[i] = chopped + third[i]
+            first[i] = verb + first[i]
+            second[i] = verb + second[i]
+            third[i] = verb + third[i]
 
         return(pd.DataFrame([first, second, third], index=index, columns=columns))
 
-print(conjugate("jīv", "1"))
+print(conjugate("likh", "6"))
 
 # some examples
 # decline("phala", "neut")
