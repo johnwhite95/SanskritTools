@@ -133,6 +133,7 @@ def list_declen(without_stem, declist):
                             ['case', 'singular', 'dual', 'plural'], axis=1)
     return(finished)
 
+# need to complete masculine support as well as implement neuter and feminine
 def decline(noun, gender):
     stem_cut = noun[:len(noun)-1]
     stem = noun[len(noun)-1:]
@@ -258,6 +259,20 @@ def conjugate(verb, verb_class):
             # return the verbs
             return(pd.DataFrame([first, second, third], index=index, columns=columns))
 
+    #check for class IV verbs
+    if verb_class == "4" or verb_class == "IV":
+        first = ["ami", "avaḥ", "amaḥ"]
+        second = ["asi", "athaḥ", "atha"]
+        third = ["ati", "ataḥ", "anti"]
+        verb = verb + "y"
+        for i in range(0, len(first)):
+            first[i] = verb + first[i]
+            second[i] = verb + second[i]
+            third[i] = verb + third[i]
+
+        return(pd.DataFrame([first, second, third], index=index, columns=columns))
+
+
     #check for class VI verbs
     # WARNING: does not yet deal with sandhi
     if verb_class == "6" or verb_class == "VI":
@@ -274,7 +289,7 @@ def conjugate(verb, verb_class):
 
         return(pd.DataFrame([first, second, third], index=index, columns=columns))
 
-print(conjugate("likh", "6"))
+print(conjugate("nṛt", "4"))
 
 # some examples
 # decline("phala", "neut")
