@@ -50,14 +50,14 @@ all_na = R_cons_na + R_vowel + dia_r
 
 
 pairs11 = [
-    ["a", "a"], ["a", "i"], ["i", "ī"], ["i", "a"], 
+    ["a", "a"], ["a", "i"], ["i", "ī"], ["i", "a"],
     ["h", "s"], ["u", "u"], ["m", "s"], ["t", "j"],
     ["ṭ", "h"], ["n", "t"], ["a", "ḥ"], ["a", "aḥ"],
     ["a", "an"]
 ]
 
 joins11 = [
-    "ā", "e", "ī", "y a", 
+    "ā", "e", "ī", "y a",
     "kṣ", "ū", "ṃs", "j j",
     "ḍ ḍh", "ṃs t", "aḥ", "āḥ",
     "ān"
@@ -78,33 +78,33 @@ joins22 = [
     "ddh"
 ]
 
-cases = ["Nom.", "Voc.", "Acc.", "Ins.", "Dat.", "Abl.", 
+cases = ["Nom.", "Voc.", "Acc.", "Ins.", "Dat.", "Abl.",
          "Gen.", "Loc."]
 
 singdec_ma = ["aḥ", "a", "am", "ena", "āya", "āt", "asya", "e"]
 dualdec_ma = ["au", "au", "au", "ābhyām", "ābhyām", "ābhyām", "ayoḥ", "ayoḥ"]
-plurdec_ma = ["āḥ", "āḥ", "ān", "aiḥ", "ebhyaḥ", "ebhyaḥ", 
+plurdec_ma = ["āḥ", "āḥ", "ān", "aiḥ", "ebhyaḥ", "ebhyaḥ",
               "ānām", "eṣu"]
 singdec_na = ["am", "a", "am", "ena", "āya", "āt", "asya", "e"]
-dualdec_na = ["e", "e", "e", "ābhyām", "ābhyām", "ābhyām", 
+dualdec_na = ["e", "e", "e", "ābhyām", "ābhyām", "ābhyām",
               "ayoḥ", "ayoḥ"]
-plurdec_na = ["āni", "āni", "āni", "aiḥ", "ebyaḥ", "ebyaḥ", 
+plurdec_na = ["āni", "āni", "āni", "aiḥ", "ebyaḥ", "ebyaḥ",
               "ānām", "eṣu"]
 
 singdec_mi = ["is", "e", "im", "inā", "aye", "es", "es", "au"]
-dualdec_mi = ["ī", "ī", "ī", "ibhyām", "ibhyām", "ibhyām", 
+dualdec_mi = ["ī", "ī", "ī", "ibhyām", "ibhyām", "ibhyām",
               "yos", "yos"]
-plurdec_mi = ["ayas", "ayas", "īn", "ibhis", "ibhyas", 
+plurdec_mi = ["ayas", "ayas", "īn", "ibhis", "ibhyas",
               "ibhyas", "īnām", "iṣu"]
 singdec_ni = ["i", "i/-e", "i", "iṇā", "iṇe", "iṇas", "iṇas", "iṇi"]
-dualdec_ni = ["iṇī", "iṇī", "iṇī", "ibhyām", "ibhyām", 
+dualdec_ni = ["iṇī", "iṇī", "iṇī", "ibhyām", "ibhyām",
               "ibhyām", "iṇnos", "iṇnos"]
-plurdec_ni = ["īṇī", "īṇī", "īṇī", "ibhis", "ibhyas", 
+plurdec_ni = ["īṇī", "īṇī", "īṇī", "ibhis", "ibhyas",
               "ibhyas", "īṇām", "iṣu"]
 singdec_fi = ["is", "e", "im", "yā", "aye", "es", "es", "au"]
-dualdec_fi = ["ī", "i", "ī", "ibhyām", "ibhyām", "ibhyām", 
+dualdec_fi = ["ī", "i", "ī", "ibhyām", "ibhyām", "ibhyām",
               "yos", "yos"]
-plurdec_fi = ["ayas", "aya", "is", "ibhis", "ibhyas", 
+plurdec_fi = ["ayas", "aya", "is", "ibhis", "ibhyas",
               "ibhyas", "īnām", "iṣu"]
 
 ma_dec = [singdec_ma, dualdec_ma, plurdec_ma]
@@ -116,9 +116,9 @@ fi_dec = [singdec_fi, dualdec_fi, plurdec_fi]
 relationship_nouns = ["pitṛ", "matṛ"]
 
 persons = ["third", "second", "first"]
-pres_ten_end = ["ati", "asi", "āmi", "-", "-", "āvaḥ", 
+pres_ten_end = ["ati", "asi", "āmi", "-", "-", "āvaḥ",
                 "anti", "-", "āmaḥ"]
-                
+
 
 def list_declen(without_stem, declist):
     singular = []
@@ -128,9 +128,9 @@ def list_declen(without_stem, declist):
         singular.append(without_stem + declist[0][i])
         dual.append(without_stem + declist[1][i])
         plural.append(without_stem + declist[2][i])
-    finished = pd.DataFrame({'case':cases, 'singular':singular, 
+    finished = pd.DataFrame({'case':cases, 'singular':singular,
                              'dual':dual, 'plural':plural}).reindex(
-                            ['case', 'singular', 'dual', 'plural'], axis=1)  
+                            ['case', 'singular', 'dual', 'plural'], axis=1)
     return(finished)
 
 def decline(noun, gender):
@@ -179,7 +179,7 @@ def switch(split_characters, length_of):
     # join all characters together as a continuous stream of text; first the devanagari, then the
     # transliteration
     return(''.join(str(x) for x in split_characters[0]) + ' → ' + ''.join(str(x) for x in split_characters[1]))
-    
+
 # code to parse through the text, split into individual characters and find corresponding locations in arrays
 # between devanagari and roman characters
 def parse(text):
@@ -227,7 +227,7 @@ def conjugate(verb, verb_class):
             second[i] = together + second[i]
             third[i] = together + third[i]
         return(pd.DataFrame([first, second, third], index=index, columns=columns))
-            
+
     if verb_class == "6" or verb_class == "VI":
         first = ["āmi", "āvaḥ", "āmaḥ"]
         second = ["āsi", "āthaḥ", "ātha"]
@@ -239,7 +239,7 @@ def conjugate(verb, verb_class):
             third[i] = chopped + third[i]
         return(pd.DataFrame([first, second, third], index=index, columns=columns))
 
-conjugate("ji", "1")
+conjugate("nī", "1")
 
 # some examples
 # decline("phala", "neut")
