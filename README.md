@@ -106,3 +106,58 @@ st.romanize("कठोपनिषद")
 
 
 
+
+```python
+st.conjugate("nṛt", "4")
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Singular</th>
+      <th>Dual</th>
+      <th>Plural</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>First</th>
+      <td>nṛtyami</td>
+      <td>nṛtyavaḥ</td>
+      <td>nṛtyamaḥ</td>
+    </tr>
+    <tr>
+      <th>Second</th>
+      <td>nṛtyasi</td>
+      <td>nṛtyathaḥ</td>
+      <td>nṛtyatha</td>
+    </tr>
+    <tr>
+      <th>Third</th>
+      <td>nṛtyati</td>
+      <td>nṛtyataḥ</td>
+      <td>nṛtyanti</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
