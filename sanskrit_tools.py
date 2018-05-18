@@ -292,6 +292,7 @@ def conjugate(verb, verb_class):
             third[i] = verb + third[i]
 
         return(pd.DataFrame([first, second, third], index=index, columns=columns))
+#some examples
 #conjugate("nī", "1")
 #conjugate("nṛt", "4")
 
