@@ -198,7 +198,49 @@ def parse(text):
 # make parse and switch functions work together
 def romanize(dev_text):
     return(switch(parse(dev_text), len(dev_text)))
-    
+
+columns = ['Singular','Dual','Plural']
+index = ['First','Second','Third']
+
+def conjugate(verb, verb_class):
+    vowels = ["a", "ī"]
+    guna = ["a", "e"]
+    if verb_class == "1" or verb_class == "I":
+        first = ["āmi", "āvaḥ", "āmaḥ"]
+        second = ["asi", "athaḥ", "atha"]
+        third = ["ati", "ataḥ", "anti"]
+        splitted = list(verb)
+        vowels = ["a", "ī", "ā", "i", "u", "ū", "ṛ", "ṝ", "ḷ"]
+        guna = ["a", "e", "a", "e", "o", "o", "ar", "ar", "al"]
+        for i in range(0, len(splitted)):
+            if splitted[i] in vowels:
+                splitted[i] = guna[vowels.index(splitted[i])]
+        if splitted[len(splitted)-1:][0] == "e":
+            splitted[len(splitted)-1:] = "ay"
+        elif splitted[len(splitted)-1:][0] == "o":
+            splitted[len(splitted)-1:] = "av"
+        elif splitted[len(splitted)-1:][0] == "ai":
+            splitted[len(splitted)-1:] = "āy"
+        together = ''.join(str(x) for x in splitted)
+        for i in range(0, len(first)):
+            first[i] = together + first[i]
+            second[i] = together + second[i]
+            third[i] = together + third[i]
+        return(pd.DataFrame([first, second, third], index=index, columns=columns))
+            
+    if verb_class == "6" or verb_class == "VI":
+        first = ["āmi", "āvaḥ", "āmaḥ"]
+        second = ["āsi", "āthaḥ", "ātha"]
+        third = ["āti", "ātaḥ", "ānti"]
+        chopped = verb[:len(verb)-3]
+        for i in range(0, len(first)):
+            first[i] = chopped + first[i]
+            second[i] = chopped + second[i]
+            third[i] = chopped + third[i]
+        return(pd.DataFrame([first, second, third], index=index, columns=columns))
+
+conjugate("ji", "1")
+
 # some examples
 # decline("phala", "neut")
 # romanize("कठोपनिषद")
