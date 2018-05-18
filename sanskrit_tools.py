@@ -48,7 +48,7 @@ all_r = R_cons + R_vowel + dia_r
 # have the implied *a dropped
 all_na = R_cons_na + R_vowel + dia_r
 
-
+# pairs for sandhi stuff
 pairs11 = [
     ["a", "a"], ["a", "i"], ["i", "ī"], ["i", "a"],
     ["h", "s"], ["u", "u"], ["m", "s"], ["t", "j"],
@@ -56,6 +56,7 @@ pairs11 = [
     ["a", "an"]
 ]
 
+# sandhi joinings
 joins11 = [
     "ā", "e", "ī", "y a",
     "kṣ", "ū", "ṃs", "j j",
@@ -91,16 +92,19 @@ dualdec_na = ["e", "e", "e", "ābhyām", "ābhyām", "ābhyām",
 plurdec_na = ["āni", "āni", "āni", "aiḥ", "ebyaḥ", "ebyaḥ",
               "ānām", "eṣu"]
 
+# masculine i-stem declensions
 singdec_mi = ["is", "e", "im", "inā", "aye", "es", "es", "au"]
 dualdec_mi = ["ī", "ī", "ī", "ibhyām", "ibhyām", "ibhyām",
               "yos", "yos"]
 plurdec_mi = ["ayas", "ayas", "īn", "ibhis", "ibhyas",
               "ibhyas", "īnām", "iṣu"]
+# neuter i-stem declensions
 singdec_ni = ["i", "i/-e", "i", "iṇā", "iṇe", "iṇas", "iṇas", "iṇi"]
 dualdec_ni = ["iṇī", "iṇī", "iṇī", "ibhyām", "ibhyām",
               "ibhyām", "iṇnos", "iṇnos"]
 plurdec_ni = ["īṇī", "īṇī", "īṇī", "ibhis", "ibhyas",
               "ibhyas", "īṇām", "iṣu"]
+# feminine i-stem declensions
 singdec_fi = ["is", "e", "im", "yā", "aye", "es", "es", "au"]
 dualdec_fi = ["ī", "i", "ī", "ibhyām", "ibhyām", "ibhyām",
               "yos", "yos"]
