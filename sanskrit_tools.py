@@ -111,6 +111,7 @@ dualdec_fi = ["ī", "i", "ī", "ibhyām", "ibhyām", "ibhyām",
 plurdec_fi = ["ayas", "aya", "is", "ibhis", "ibhyas",
               "ibhyas", "īnām", "iṣu"]
 
+# combined declensions
 ma_dec = [singdec_ma, dualdec_ma, plurdec_ma]
 na_dec = [singdec_na, dualdec_na, plurdec_na]
 mi_dec = [singdec_mi, dualdec_mi, plurdec_mi]
