@@ -289,7 +289,7 @@ def conjugate(verb, verb_class):
 
         return(pd.DataFrame([first, second, third], index=index, columns=columns))
 
-#print(conjugate("nṛt", "4"))
+#conjugate("nṛt", "4")
 
 # some examples
 # decline("phala", "neut")
