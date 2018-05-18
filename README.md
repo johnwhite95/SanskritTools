@@ -3,7 +3,7 @@
 A toolkit for the Sanskrit language. Currently supports noun declension and
 transliteration from Devanagari to Latin alphabet.
 
-## Some examples
+## A few examples
 
 
 
@@ -147,5 +147,3 @@ st.conjugate("nṛt", "4")
   </tbody>
 </table>
 </div>
-
-
