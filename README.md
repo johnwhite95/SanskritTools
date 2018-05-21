@@ -8,12 +8,12 @@ transliteration from Devanagari to Latin alphabet.
 
 
 ```python
-import sanskrit_tools as st
+import sanskrit_tools
 ```
 
 
 ```python
-st.decline("phala", "neut")
+decline("phala", "neut")
 ```
 
 
@@ -96,7 +96,7 @@ st.decline("phala", "neut")
 
 
 ```python
-st.romanize("कठोपनिषद")
+romanize("कठोपनिषद")
 ```
 
 
@@ -108,7 +108,7 @@ st.romanize("कठोपनिषद")
 
 
 ```python
-st.conjugate("nṛt", "4")
+conjugate("nṛt", "4")
 ```
 
 
