@@ -82,10 +82,12 @@ joins22 = [
 cases = ["Nom.", "Voc.", "Acc.", "Ins.", "Dat.", "Abl.",
          "Gen.", "Loc."]
 
+# masculine a-stem declensions
 singdec_ma = ["aḥ", "a", "am", "ena", "āya", "āt", "asya", "e"]
 dualdec_ma = ["au", "au", "au", "ābhyām", "ābhyām", "ābhyām", "ayoḥ", "ayoḥ"]
 plurdec_ma = ["āḥ", "āḥ", "ān", "aiḥ", "ebhyaḥ", "ebhyaḥ",
               "ānām", "eṣu"]
+# neuter a-stem declensions
 singdec_na = ["am", "a", "am", "ena", "āya", "āt", "asya", "e"]
 dualdec_na = ["e", "e", "e", "ābhyām", "ābhyām", "ābhyām",
               "ayoḥ", "ayoḥ"]
@@ -111,20 +113,67 @@ dualdec_fi = ["ī", "i", "ī", "ibhyām", "ibhyām", "ibhyām",
 plurdec_fi = ["ayas", "aya", "is", "ibhis", "ibhyas",
               "ibhyas", "īnām", "iṣu"]
 
+# masculine u-stem declensions
+singdec_mu = ["us", "um", "unā", "ave", "os", "os", "au", "o"]
+dualdec_mu = ["ū", "ū", "ubhyām", "ubhyām", "ubhyām", "vos", "vos", "u"]
+plurdec_mu = ["avas", "ūn", "ubhis", "ubhyas", "ubhyas", "ūnām", "uṣu", "avas"]
+# neuter u-stem declensions
+singdec_nu = ["u", "u", "unā", "une", "unas", "unas", "uni", "u/o"]
+dualdec_nu = ["unī", "unī", "ubhyām", "ubhyām", "ubhyām", "unos", "unos", "uni"]
+plurdec_nu = ["ūni", "ūni", "ubhis", "ubhyas", "ubhyas", "ūnām", "uṣu", "ūni"]
+# feminine u-stem declensions
+singdec_fu = ["us", "um", "vā", "ave", "os", "os", "au", "o"]
+dualdec_fu = ["ū", "ū", "ubhyām", "ubhyām", "ubhyām", "vos", "vos", "ū"]
+plurdec_fu = ["avas", "ūs", "ubhis", "ubhyas", "ubhyas", "unam", "usu", "avas"]
+
+# masculine ṛ-stem agent declensions
+agent_r_masc_s = ["ā", "āram", "rā", "re", "ur", "ur", "ari", "ar"]
+agent_r_masc_d = ["ārau", "ārau", "ṛbhyām", "ṛbhyām", "ṛbhyām", "ros", "ros", "arau"]
+agent_r_masc_p = ["āras", "ṛn", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "āras"]
+# masculine ṛ-stem relationship declensions
+rela_r_masc_s = ["ā", "aram", "rā", "re", "ur", "ur", "ari", "ar"]
+rela_r_masc_d = ["arau", "arau", "bhyām", "bhyām", "bhyām", "ros", "ros", "arau"]
+rela_r_masc_p = ["aras", "ṛn", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "aras"]
+#feminine ṛ-stem agent declensions
+agent_r_fem_s = ["rīā", "rīaram", "rīrā", "rīre", "rīur", "rīur", "rīari", "rīar"]
+agent_r_fem_d = ["rīarau", "rīarau", "rīṛbhyām", "rīṛbhyām", "rīṛbhyām", 
+                 "rīros", "rīros", "rīarau"]
+agent_r_fem_p = ["rīaras", "rīṛs", "rīṛbhis", "rīṛbhyas", "rīṛbhyas", 
+                 "rīṛnām", "rīṛṣu", "rīaras"]
+#feminine ṛ-stem relationship declensions
+rel_r_fem_s = ["ā", "aram", "rā", "re", "ur", "ur", "ari", "ar"]
+rel_r_fem_d = ["arau", "arau", "ṛbhyām", "ṛbhyām", "ṛbhyām", "ros", "ros", "arau"]
+rel_r_fem_p = ["aras", "ṛs", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "aras"]
+#neuter ṛ-stem declensions
+singdec_nr = ["ṛ", "ṛ", "ṛ", "ṛṇā", "ṛṇe", "ṛṇas", "ṛṇas", "ṛṇi"]
+dualdec_nr = ["ṛṇī", "ṛṇī", "ṛṇī", "ṛbhyām", "ṛbhyām",
+              "ṛbhyām", "ṛṇnos", "ṛṇnos"]
+plurdec_nr = ["ṛṇī", "ṛṇī", "ṛṇī", "ṛbhis", "ṛbhyas",
+              "ṛbhyas", "ṛṇām", "ṛṣu"]
+
 # combined declensions
 ma_dec = [singdec_ma, dualdec_ma, plurdec_ma]
 na_dec = [singdec_na, dualdec_na, plurdec_na]
 mi_dec = [singdec_mi, dualdec_mi, plurdec_mi]
 ni_dec = [singdec_ni, dualdec_ni, plurdec_ni]
 fi_dec = [singdec_fi, dualdec_fi, plurdec_fi]
+mu_dec = [singdec_mu, dualdec_mu, plurdec_mu]
+nu_dec = [singdec_nu, dualdec_nu, plurdec_nu]
+fu_dec = [singdec_fu, dualdec_fu, plurdec_fu]
+agent_r_masc = [agent_r_masc_s, agent_r_masc_d, agent_r_masc_d]
+rel_r_masc = [rela_r_masc_s, rela_r_masc_d, rela_r_masc_p]
+agent_r_fem = [agent_r_fem_s, agent_r_fem_d, agent_r_fem_d]
+rel_r_fem = [rel_r_fem_s, rel_r_fem_d, rel_r_fem_p]
+nr_dec = [singdec_nr, dualdec_nr, plurdec_nr]
 
+agent_nouns = ["boddhṛ", "dātṛ", "kartṛ"]
 relationship_nouns = ["pitṛ", "matṛ"]
 
 persons = ["third", "second", "first"]
 pres_ten_end = ["ati", "asi", "āmi", "-", "-", "āvaḥ",
                 "anti", "-", "āmaḥ"]
 
-
+# function to process and display declensions
 def list_declen(without_stem, declist):
     singular = []
     dual = []
@@ -154,13 +203,31 @@ def decline(noun, gender):
             output = list_declen(stem_cut, ni_dec)
         elif gender == "fem":
             output = list_declen(stem_cut, fi_dec)
+    elif stem == "u":
+        if gender == "masc":
+            output = list_declen(stem_cut, mu_dec)
+        elif gender == "neut":
+            output = list_declen(stem_cut, nu_dec)
+        elif gender == "fem":
+            output = list_declen(stem_cut, fu_dec)
     elif stem == "ṛ":
-        output = "blah"
+        if gender == "masc":
+            if noun in agent_nouns:
+                output = list_declen(stem_cut, agent_r_masc)
+            elif noun in relationship_nouns:
+                output = list_declen(stem_cut, rel_r_masc)
+        if gender == "fem":
+            if noun in agent_nouns:
+                output = list_declen(stem_cut, agent_r_fem)
+            elif noun in relationship_nouns:
+                output = list_declen(stem_cut, rel_r_fem)
+        if gender == "neut":
+            output = list_declen(stem_cut, nr_dec)
     else:
         output = "noun not recognized"
     return(output)
 
-"""maybe include an option for clusters"""
+# maybe include an option for clusters
 def devanagari(kind):
     if kind == "vowels":
         finished_sing = pd.DataFrame({'D_vowel':D_vowel, 'R_vowel':R_vowel}).reindex(
@@ -208,95 +275,4 @@ def romanize(dev_text):
 columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
 
-def conjugate(verb, verb_class):
-    #vowels = ["a", "ī"]
-    #guna = ["a", "e"]
-
-    #case for class I verbs
-    if verb_class == "1" or verb_class == "I":
-
-        #database of class I conjugations
-        first = ["āmi", "āvaḥ", "āmaḥ"]
-        second = ["asi", "athaḥ", "atha"]
-        third = ["ati", "ataḥ", "anti"]
-
-        #split verb into list for easy parsing
-        splitted = list(verb)
-
-        #store vowels and their guna
-        vowels = ["a", "ī", "ā", "i", "u", "ū", "ṛ", "ṝ", "ḷ"]
-        guna = ["a", "e", "a", "e", "o", "o", "ar", "ar", "al"]
-
-        #distinguish long and short vowels
-        long_vow = ["ī", "ā", "ū", "ṝ", "ḹ"]
-        short_vow = ["a", "i", "u", "ṛ", "ḷ"]
-
-        #check case for long vowel prior to consonant
-        if splitted[len(splitted)-2:][0] in long_vow and splitted[len(splitted)-1:][0] in R_cons_na:
-            together = ''.join(str(x) for x in splitted)
-            for i in range(0, len(first)):
-                first[i] = together + first[i]
-                second[i] = together + second[i]
-                third[i] = together + third[i]
-            return(pd.DataFrame([first, second, third], index=index, columns=columns))
-
-        #otherwise, treat as the other cases
-        else:
-            #strengthen vowel to guna
-            for i in range(0, len(splitted)):
-                if splitted[i] in vowels:
-                    splitted[i] = guna[vowels.index(splitted[i])]
-
-            # check for and appropriately change verbs with vowels e, o, and ai
-            if splitted[len(splitted)-1:][0] == "e":
-                splitted[len(splitted)-1:] = "ay"
-            elif splitted[len(splitted)-1:][0] == "o":
-                splitted[len(splitted)-1:] = "av"
-            elif splitted[len(splitted)-1:][0] == "ai":
-                splitted[len(splitted)-1:] = "āy"
-            together = ''.join(str(x) for x in splitted)
-
-            #apply the verb endings
-            for i in range(0, len(first)):
-                first[i] = together + first[i]
-                second[i] = together + second[i]
-                third[i] = together + third[i]
-            # return the verbs
-            return(pd.DataFrame([first, second, third], index=index, columns=columns))
-
-    #check for class IV verbs
-    if verb_class == "4" or verb_class == "IV":
-        first = ["ami", "avaḥ", "amaḥ"]
-        second = ["asi", "athaḥ", "atha"]
-        third = ["ati", "ataḥ", "anti"]
-        verb = verb + "y"
-        for i in range(0, len(first)):
-            first[i] = verb + first[i]
-            second[i] = verb + second[i]
-            third[i] = verb + third[i]
-
-        return(pd.DataFrame([first, second, third], index=index, columns=columns))
-
-
-    #check for class VI verbs
-    # WARNING: does not yet deal with sandhi
-    if verb_class == "6" or verb_class == "VI":
-
-        first = ["ami", "avaḥ", "amaḥ"]
-        second = ["asi", "athaḥ", "atha"]
-        third = ["ati", "ataḥ", "anti"]
-        #chopped = verb[:len(verb)-3]
-
-        for i in range(0, len(first)):
-            first[i] = verb + first[i]
-            second[i] = verb + second[i]
-            third[i] = verb + third[i]
-
-        return(pd.DataFrame([first, second, third], index=index, columns=columns))
-#some examples
-#conjugate("nī", "1")
-#conjugate("nṛt", "4")
-
-# some examples
-# decline("phala", "neut")
-# romanize("कठोपनिषद")
+decline("datṛ", "neut")
