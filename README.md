@@ -1,6 +1,6 @@
 # SanskritTools
 ## Overview
-A toolkit for the Sanskrit language. Currently supports noun declension and
+A toolkit for the Sanskrit language. Currently supports noun declension, verb conjugation, and
 transliteration from Devanagari to Latin alphabet.
 
 ## A few examples
