@@ -82,6 +82,9 @@ joins22 = [
 cases = ["Nom.", "Voc.", "Acc.", "Ins.", "Dat.", "Abl.",
          "Gen.", "Loc."]
 
+columns = ['Singular','Dual','Plural']
+index = ['First','Second','Third']
+
 # masculine a-stem declensions
 singdec_ma = ["aḥ", "a", "am", "ena", "āya", "āt", "asya", "e"]
 dualdec_ma = ["au", "au", "au", "ābhyām", "ābhyām", "ābhyām", "ayoḥ", "ayoḥ"]
@@ -227,6 +230,53 @@ def decline(noun, gender):
         output = "noun not recognized"
     return(output)
 
+def conjugate(verb, verb_class):
+    weak_vowels = ["a", "ī", "ā", "i", "u", "ū", "ṛ", "ṝ", "ḷ"]
+    guna_vowels = ["a", "e", "a", "e", "o", "o", "ar", "ar", "al"]
+    if verb_class == "1" or verb_class == "I":
+        first = ["āmi", "āvaḥ", "āmaḥ"]
+        second = ["asi", "athaḥ", "atha"]
+        third = ["ati", "ataḥ", "anti"]
+        splitted = list(verb)
+        for i in range(0, len(splitted)):
+            if splitted[i] in weak_vowels:
+                splitted[i] = guna_vowels[weak_vowels.index(splitted[i])]
+        if splitted[len(splitted)-1:][0] == "e":
+            splitted[len(splitted)-1:] = "ay"
+        elif splitted[len(splitted)-1:][0] == "o":
+            splitted[len(splitted)-1:] = "av"
+        elif splitted[len(splitted)-1:][0] == "ai":
+            splitted[len(splitted)-1:] = "āy"
+        together = ''.join(str(x) for x in splitted)
+        for i in range(0, len(first)):
+            first[i] = together + first[i]
+            second[i] = together + second[i]
+            third[i] = together + third[i]
+        return(pd.DataFrame([first, second, third], index=index, columns=columns))
+    
+    if verb_class == "4" or verb_class == "IV":
+        first = ["mi", "vaḥ", "maḥ"]
+        second = ["si", "thaḥ", "tha"]
+        third = ["ti", "taḥ", "nti"]
+        splitted = list(verb)
+        together = ''.join(str(x) for x in splitted)
+        for i in range(0, len(first)):
+            first[i] = together + "ya" + first[i]
+            second[i] = together + "ya" + second[i]
+            third[i] = together + "ya" + third[i]
+        return(pd.DataFrame([first, second, third], index=index, columns=columns))  
+    
+    if verb_class == "6" or verb_class == "VI":
+        first = ["āmi", "āvaḥ", "āmaḥ"]
+        second = ["āsi", "āthaḥ", "ātha"]
+        third = ["āti", "ātaḥ", "ānti"]
+        chopped = verb[:len(verb)-3]
+        for i in range(0, len(first)):
+            first[i] = chopped + first[i]
+            second[i] = chopped + second[i]
+            third[i] = chopped + third[i]
+        return(pd.DataFrame([first, second, third], index=index, columns=columns))
+
 # maybe include an option for clusters
 def devanagari(kind):
     if kind == "vowels":
@@ -276,3 +326,4 @@ columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
 
 decline("datṛ", "neut")
+conjugate("nṛt", "IV")
