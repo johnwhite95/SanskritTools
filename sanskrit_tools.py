@@ -1,5 +1,6 @@
 import pandas as pd
 
+# text database
 D_vowel = [
     " ", "अ", "आ", "इ", "ई", "उ", "ऊ", "ए", "ऐ", "ओ",
     "औ", "ऋ", "ॠ", "ऌ", "ॡ", "ं", "ः"
@@ -139,9 +140,9 @@ rela_r_masc_d = ["arau", "arau", "bhyām", "bhyām", "bhyām", "ros", "ros", "ar
 rela_r_masc_p = ["aras", "ṛn", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "aras"]
 #feminine ṛ-stem agent declensions
 agent_r_fem_s = ["rīā", "rīaram", "rīrā", "rīre", "rīur", "rīur", "rīari", "rīar"]
-agent_r_fem_d = ["rīarau", "rīarau", "rīṛbhyām", "rīṛbhyām", "rīṛbhyām", 
+agent_r_fem_d = ["rīarau", "rīarau", "rīṛbhyām", "rīṛbhyām", "rīṛbhyām",
                  "rīros", "rīros", "rīarau"]
-agent_r_fem_p = ["rīaras", "rīṛs", "rīṛbhis", "rīṛbhyas", "rīṛbhyas", 
+agent_r_fem_p = ["rīaras", "rīṛs", "rīṛbhis", "rīṛbhyas", "rīṛbhyas",
                  "rīṛnām", "rīṛṣu", "rīaras"]
 #feminine ṛ-stem relationship declensions
 rel_r_fem_s = ["ā", "aram", "rā", "re", "ur", "ur", "ari", "ar"]
@@ -253,7 +254,7 @@ def conjugate(verb, verb_class):
             second[i] = together + second[i]
             third[i] = together + third[i]
         return(pd.DataFrame([first, second, third], index=index, columns=columns))
-    
+
     if verb_class == "4" or verb_class == "IV":
         first = ["mi", "vaḥ", "maḥ"]
         second = ["si", "thaḥ", "tha"]
@@ -264,8 +265,8 @@ def conjugate(verb, verb_class):
             first[i] = together + "ya" + first[i]
             second[i] = together + "ya" + second[i]
             third[i] = together + "ya" + third[i]
-        return(pd.DataFrame([first, second, third], index=index, columns=columns))  
-    
+        return(pd.DataFrame([first, second, third], index=index, columns=columns))
+
     if verb_class == "6" or verb_class == "VI":
         first = ["āmi", "āvaḥ", "āmaḥ"]
         second = ["āsi", "āthaḥ", "ātha"]
