@@ -1,7 +1,7 @@
 # SanskritTools
 ## Overview
 A toolkit for the Sanskrit language. Currently supports noun declension, verb conjugation, and
-transliteration from Devanagari to Latin alphabet.
+transliteration from Devanagari to Latin alphabet. Still in beta, some features not full implemented or quality controlled.
 
 ## A few examples
 
