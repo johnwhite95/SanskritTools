@@ -103,7 +103,7 @@ dualdec_nr = r_stem_declensions["dualdec_nr"]
 plurdec_nr = r_stem_declensions["plurdec_nr"]
 
 # combined declensions
-ma_dec = [singdec_ma, dualdec_ma, plurdec_ma]
+ma_dec = [a_stem_declensions["singdec_ma"], a_stem_declensions["dualdec_ma"], a_stem_declensions["plurdec_ma"]]
 na_dec = [singdec_na, dualdec_na, plurdec_na]
 mi_dec = [singdec_mi, dualdec_mi, plurdec_mi]
 ni_dec = [singdec_ni, dualdec_ni, plurdec_ni]
