@@ -1,0 +1,17 @@
+{
+    "singdec_mi": ["is", "e", "im", "inā", "aye", "es", "es", "au"],
+    "dualdec_mi": ["ī", "ī", "ī", "ibhyām", "ibhyām", "ibhyām",
+                "yos", "yos"],
+    "plurdec_mi": ["ayas", "ayas", "īn", "ibhis", "ibhyas",
+                "ibhyas", "īnām", "iṣu"],
+    "singdec_ni": ["i", "i/-e", "i", "iṇā", "iṇe", "iṇas", "iṇas", "iṇi"],
+    "dualdec_ni": ["iṇī", "iṇī", "iṇī", "ibhyām", "ibhyām",
+                "ibhyām", "iṇnos", "iṇnos"],
+    "plurdec_ni": ["īṇī", "īṇī", "īṇī", "ibhis", "ibhyas",
+                "ibhyas", "īṇām", "iṣu"],
+    "singdec_fi": ["is", "e", "im", "yā", "aye", "es", "es", "au"],
+    "dualdec_fi": ["ī", "i", "ī", "ibhyām", "ibhyām", "ibhyām",
+                "yos", "yos"],
+    "plurdec_fi": ["ayas", "aya", "is", "ibhis", "ibhyas",
+                "ibhyas", "īnām", "iṣu"]
+}

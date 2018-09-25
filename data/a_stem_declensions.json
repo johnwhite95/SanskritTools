@@ -1,0 +1,11 @@
+{
+    "singdec_ma": ["aḥ", "a", "am", "ena", "āya", "āt", "asya", "e"],
+    "dualdec_ma": ["au", "au", "au", "ābhyām", "ābhyām", "ābhyām", "ayoḥ", "ayoḥ"],
+    "plurdec_ma": ["āḥ", "āḥ", "ān", "aiḥ", "ebhyaḥ", "ebhyaḥ",
+                "ānām", "eṣu"],
+    "singdec_na": ["am", "a", "am", "ena", "āya", "āt", "asya", "e"],
+    "dualdec_na": ["e", "e", "e", "ābhyām", "ābhyām", "ābhyām",
+                "ayoḥ", "ayoḥ"],
+    "plurdec_na": ["āni", "āni", "āni", "aiḥ", "ebyaḥ", "ebyaḥ",
+                "ānām", "eṣu"]
+}

@@ -1,0 +1,11 @@
+{
+    "singdec_mu": ["us", "um", "unā", "ave", "os", "os", "au", "o"],
+    "dualdec_mu": ["ū", "ū", "ubhyām", "ubhyām", "ubhyām", "vos", "vos", "u"],
+    "plurdec_mu": ["avas", "ūn", "ubhis", "ubhyas", "ubhyas", "ūnām", "uṣu", "avas"],
+    "singdec_nu": ["u", "u", "unā", "une", "unas", "unas", "uni", "u/o"],
+    "dualdec_nu": ["unī", "unī", "ubhyām", "ubhyām", "ubhyām", "unos", "unos", "uni"],
+    "plurdec_nu": ["ūni", "ūni", "ubhis", "ubhyas", "ubhyas", "ūnām", "uṣu", "ūni"],
+    "singdec_fu": ["us", "um", "vā", "ave", "os", "os", "au", "o"],
+    "dualdec_fu": ["ū", "ū", "ubhyām", "ubhyām", "ubhyām", "vos", "vos", "ū"],
+    "plurdec_fu": ["avas", "ūs", "ubhis", "ubhyas", "ubhyas", "unam", "usu", "avas"]
+}

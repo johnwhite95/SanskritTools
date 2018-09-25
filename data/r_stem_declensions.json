@@ -1,0 +1,25 @@
+{
+    "agent_r_masc_s": ["ā", "āram", "rā", "re", "ur", "ur", "ari", "ar"],
+    "agent_r_masc_d": ["ārau", "ārau", "ṛbhyām", "ṛbhyām", "ṛbhyām", "ros", "ros", "arau"],
+    "agent_r_masc_p": ["āras", "ṛn", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "āras"],
+
+    "rela_r_masc_s": ["ā", "aram", "rā", "re", "ur", "ur", "ari", "ar"],
+    "rela_r_masc_d": ["arau", "arau", "bhyām", "bhyām", "bhyām", "ros", "ros", "arau"],
+    "rela_r_masc_p": ["aras", "ṛn", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "aras"],
+
+    "agent_r_fem_s": ["rīā", "rīaram", "rīrā", "rīre", "rīur", "rīur", "rīari", "rīar"],
+    "agent_r_fem_d": ["rīarau", "rīarau", "rīṛbhyām", "rīṛbhyām", "rīṛbhyām",
+                    "rīros", "rīros", "rīarau"],
+    "agent_r_fem_p": ["rīaras", "rīṛs", "rīṛbhis", "rīṛbhyas", "rīṛbhyas",
+                    "rīṛnām", "rīṛṣu", "rīaras"],
+
+    "rel_r_fem_s": ["ā", "aram", "rā", "re", "ur", "ur", "ari", "ar"],
+    "rel_r_fem_d": ["arau", "arau", "ṛbhyām", "ṛbhyām", "ṛbhyām", "ros", "ros", "arau"],
+    "rel_r_fem_p": ["aras", "ṛs", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "aras"],
+
+    "singdec_nr": ["ṛ", "ṛ", "ṛ", "ṛṇā", "ṛṇe", "ṛṇas", "ṛṇas", "ṛṇi"],
+    "dualdec_nr": ["ṛṇī", "ṛṇī", "ṛṇī", "ṛbhyām", "ṛbhyām",
+                "ṛbhyām", "ṛṇnos", "ṛṇnos"],
+    "plurdec_nr": ["ṛṇī", "ṛṇī", "ṛṇī", "ṛbhis", "ṛbhyas",
+                "ṛbhyas", "ṛṇām", "ṛṣu"]
+}

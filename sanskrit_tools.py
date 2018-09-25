@@ -2,47 +2,26 @@
 # -*- coding: utf-8 -*-
 
 import pandas as pd
+import json
+
+orthography = json.load(open("./data/orthography.json", "r"))
+sandhi_data = json.load(open("./data/sandhi_data.json", "r"))
+a_stem_declensions = json.load(open("./data/a_stem_declensions.json", "r"))
+i_stem_declensions = json.load(open("./data/i_stem_declensions.json", "r"))
+u_stem_declensions = json.load(open("./data/u_stem_declensions.json", "r"))
+r_stem_declensions = json.load(open("./data/r_stem_declensions.json", "r"))
+agent_nouns = open("./data/agent_nouns.csv", "r")
+relationship_nouns = open("./data/relationship_nouns.csv", "r")
+pres_ten_end = json.load(open("./data/pres_ten_end.json", "r"))
 
 # text database
-D_vowel = [
-    " ", "अ", "आ", "इ", "ई", "उ", "ऊ", "ए", "ऐ", "ओ",
-    "औ", "ऋ", "ॠ", "ऌ", "ॡ", "ं", "ः"
-]
-R_vowel = [
-    " ", "a", "ā", "i", "ī", "u", "ū", "e", "ai", "o",
-    "au", "ṛ", "ṝ", "ḷ", "ḹ", "aṃ", "ḥ"
-]
-
-dia_d = [
-    "ा", "ी", "ि", "ु", "ू", "ृ", "ॄ", "ॢ", "ॣ", "े", "ै", "ो", "ौ", "्"
-]
-
-dia_r = [
-    "ā", "ī", "i", "u", "ū", "r", "ṛ", "ḷ", "ḹ", "e", "ai", "o", "au", ""
-]
-
-D_cons = [
-    "क", "ख", "ग", "घ", "ङ", "च", "छ", "ज", "झ",
-    "ञ", "ट", "ठ", "ड", "ढ", "ण", "त", "थ", "द",
-    "ध", "न", "प", "फ", "ब", "भ", "म", "य", "र",
-    "ल", "व", "श", "ष", "स", "ह"
-]
-
-R_cons = [
-    "ka", "kha", "ga", "gha", "ṅa", "ca", "cha",
-    "ja", "jha", "ña", "ṭa", "ṭha", "ḍa", "ḍha",
-    "ṇa", "ta", "tha", "da", "dha", "na", "pa",
-    "pha", "ba", "bha", "ma", "ya", "ra", "la",
-    "va", "śa", "ṣa", "sa", "ha"
-]
-
-R_cons_na = [
-    "k", "kh", "g", "gh", "ṅ", "c", "ch",
-    "j", "jh", "ñ", "ṭ", "ṭh", "ḍ", "ḍh",
-    "ṇ", "t", "th", "d", "dh", "n", "p",
-    "ph", "b", "bh", "m", "y", "r", "l",
-    "v", "ś", "ṣ", "s", "h"
-]
+D_vowel = orthography["D_vowel"]
+R_vowel = orthography["R_vowel"]
+dia_d = orthography["dia_d"]
+dia_r = orthography["dia_r"]
+D_cons = orthography["D_cons"]
+R_cons = orthography["R_cons"]
+R_cons_na = orthography["R_cons_na"]
 
 # combine all devanagari characters and diacritics
 all_d = D_cons + D_vowel + dia_d
@@ -53,35 +32,13 @@ all_r = R_cons + R_vowel + dia_r
 all_na = R_cons_na + R_vowel + dia_r
 
 # pairs for sandhi stuff
-pairs11 = [
-    ["a", "a"], ["a", "i"], ["i", "ī"], ["i", "a"],
-    ["h", "s"], ["u", "u"], ["m", "s"], ["t", "j"],
-    ["ṭ", "h"], ["n", "t"], ["a", "ḥ"], ["a", "aḥ"],
-    ["a", "an"]
-]
-
+pairs11 = sandhi_data["pairs11"]
 # sandhi joinings
-joins11 = [
-    "ā", "e", "ī", "y a",
-    "kṣ", "ū", "ṃs", "j j",
-    "ḍ ḍh", "ṃs t", "aḥ", "āḥ",
-    "ān"
-]
-
-pairs21 = [
-    ["au", "ā"]
-]
-
-joins21 = [
-    "āv ā"
-]
-
-pairs22 = [
-    ["dh", "dh"]
-]
-joins22 = [
-    "ddh"
-]
+joins11 = sandhi_data["joins11"]
+pairs21 = sandhi_data["pairs21"]
+joins21 = sandhi_data["joins21"]
+pairs22 = sandhi_data["pairs22"]
+joins22 = sandhi_data["joins22"]
 
 cases = ["Nom.", "Voc.", "Acc.", "Ins.", "Dat.", "Abl.",
          "Gen.", "Loc."]
@@ -90,73 +47,60 @@ columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
 
 # masculine a-stem declensions
-singdec_ma = ["aḥ", "a", "am", "ena", "āya", "āt", "asya", "e"]
-dualdec_ma = ["au", "au", "au", "ābhyām", "ābhyām", "ābhyām", "ayoḥ", "ayoḥ"]
-plurdec_ma = ["āḥ", "āḥ", "ān", "aiḥ", "ebhyaḥ", "ebhyaḥ",
-              "ānām", "eṣu"]
+singdec_ma = a_stem_declensions["singdec_ma"]
+dualdec_ma = a_stem_declensions["dualdec_ma"]
+plurdec_ma = a_stem_declensions["plurdec_ma"]
 # neuter a-stem declensions
-singdec_na = ["am", "a", "am", "ena", "āya", "āt", "asya", "e"]
-dualdec_na = ["e", "e", "e", "ābhyām", "ābhyām", "ābhyām",
-              "ayoḥ", "ayoḥ"]
-plurdec_na = ["āni", "āni", "āni", "aiḥ", "ebyaḥ", "ebyaḥ",
-              "ānām", "eṣu"]
+singdec_na = a_stem_declensions["singdec_na"]
+dualdec_na = a_stem_declensions["dualdec_na"]
+plurdec_na = a_stem_declensions["plurdec_na"]
 
 # masculine i-stem declensions
-singdec_mi = ["is", "e", "im", "inā", "aye", "es", "es", "au"]
-dualdec_mi = ["ī", "ī", "ī", "ibhyām", "ibhyām", "ibhyām",
-              "yos", "yos"]
-plurdec_mi = ["ayas", "ayas", "īn", "ibhis", "ibhyas",
-              "ibhyas", "īnām", "iṣu"]
+singdec_mi = i_stem_declensions["singdec_mi"]
+dualdec_mi = i_stem_declensions["dualdec_mi"]
+plurdec_mi = i_stem_declensions["plurdec_mi"]
 # neuter i-stem declensions
-singdec_ni = ["i", "i/-e", "i", "iṇā", "iṇe", "iṇas", "iṇas", "iṇi"]
-dualdec_ni = ["iṇī", "iṇī", "iṇī", "ibhyām", "ibhyām",
-              "ibhyām", "iṇnos", "iṇnos"]
-plurdec_ni = ["īṇī", "īṇī", "īṇī", "ibhis", "ibhyas",
-              "ibhyas", "īṇām", "iṣu"]
+singdec_ni = i_stem_declensions["singdec_ni"]
+dualdec_ni = i_stem_declensions["dualdec_ni"]
+plurdec_ni = i_stem_declensions["plurdec_ni"]
 # feminine i-stem declensions
-singdec_fi = ["is", "e", "im", "yā", "aye", "es", "es", "au"]
-dualdec_fi = ["ī", "i", "ī", "ibhyām", "ibhyām", "ibhyām",
-              "yos", "yos"]
-plurdec_fi = ["ayas", "aya", "is", "ibhis", "ibhyas",
-              "ibhyas", "īnām", "iṣu"]
+singdec_fi = i_stem_declensions["singdec_fi"]
+dualdec_fi = i_stem_declensions["dualdec_fi"]
+plurdec_fi = i_stem_declensions["plurdec_fi"]
 
 # masculine u-stem declensions
-singdec_mu = ["us", "um", "unā", "ave", "os", "os", "au", "o"]
-dualdec_mu = ["ū", "ū", "ubhyām", "ubhyām", "ubhyām", "vos", "vos", "u"]
-plurdec_mu = ["avas", "ūn", "ubhis", "ubhyas", "ubhyas", "ūnām", "uṣu", "avas"]
+singdec_mu = u_stem_declensions["singdec_mu"]
+dualdec_mu = u_stem_declensions["dualdec_mu"]
+plurdec_mu = u_stem_declensions["plurdec_mu"]
 # neuter u-stem declensions
-singdec_nu = ["u", "u", "unā", "une", "unas", "unas", "uni", "u/o"]
-dualdec_nu = ["unī", "unī", "ubhyām", "ubhyām", "ubhyām", "unos", "unos", "uni"]
-plurdec_nu = ["ūni", "ūni", "ubhis", "ubhyas", "ubhyas", "ūnām", "uṣu", "ūni"]
+singdec_nu = u_stem_declensions["singdec_nu"]
+dualdec_nu = u_stem_declensions["dualdec_nu"]
+plurdec_nu = u_stem_declensions["plurdec_nu"]
 # feminine u-stem declensions
-singdec_fu = ["us", "um", "vā", "ave", "os", "os", "au", "o"]
-dualdec_fu = ["ū", "ū", "ubhyām", "ubhyām", "ubhyām", "vos", "vos", "ū"]
-plurdec_fu = ["avas", "ūs", "ubhis", "ubhyas", "ubhyas", "unam", "usu", "avas"]
+singdec_fu = u_stem_declensions["singdec_fu"]
+dualdec_fu = u_stem_declensions["dualdec_fu"]
+plurdec_fu = u_stem_declensions["plurdec_fu"]
 
 # masculine ṛ-stem agent declensions
-agent_r_masc_s = ["ā", "āram", "rā", "re", "ur", "ur", "ari", "ar"]
-agent_r_masc_d = ["ārau", "ārau", "ṛbhyām", "ṛbhyām", "ṛbhyām", "ros", "ros", "arau"]
-agent_r_masc_p = ["āras", "ṛn", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "āras"]
+agent_r_masc_s = r_stem_declensions["agent_r_masc_s"]
+agent_r_masc_d = r_stem_declensions["agent_r_masc_d"]
+agent_r_masc_p = r_stem_declensions["agent_r_masc_p"]
 # masculine ṛ-stem relationship declensions
-rela_r_masc_s = ["ā", "aram", "rā", "re", "ur", "ur", "ari", "ar"]
-rela_r_masc_d = ["arau", "arau", "bhyām", "bhyām", "bhyām", "ros", "ros", "arau"]
-rela_r_masc_p = ["aras", "ṛn", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "aras"]
+rela_r_masc_s = r_stem_declensions["rela_r_masc_s"]
+rela_r_masc_d = r_stem_declensions["rela_r_masc_d"]
+rela_r_masc_p = r_stem_declensions["rela_r_masc_p"]
 #feminine ṛ-stem agent declensions
-agent_r_fem_s = ["rīā", "rīaram", "rīrā", "rīre", "rīur", "rīur", "rīari", "rīar"]
-agent_r_fem_d = ["rīarau", "rīarau", "rīṛbhyām", "rīṛbhyām", "rīṛbhyām",
-                 "rīros", "rīros", "rīarau"]
-agent_r_fem_p = ["rīaras", "rīṛs", "rīṛbhis", "rīṛbhyas", "rīṛbhyas",
-                 "rīṛnām", "rīṛṣu", "rīaras"]
+agent_r_fem_s = r_stem_declensions["agent_r_fem_s"]
+agent_r_fem_d = r_stem_declensions["agent_r_fem_d"]
+agent_r_fem_p = r_stem_declensions["agent_r_fem_p"]
 #feminine ṛ-stem relationship declensions
-rel_r_fem_s = ["ā", "aram", "rā", "re", "ur", "ur", "ari", "ar"]
-rel_r_fem_d = ["arau", "arau", "ṛbhyām", "ṛbhyām", "ṛbhyām", "ros", "ros", "arau"]
-rel_r_fem_p = ["aras", "ṛs", "ṛbhis", "ṛbhyas", "ṛbhyas", "ṛnām", "ṛṣu", "aras"]
+rel_r_fem_s = r_stem_declensions["rel_r_fem_s"]
+rel_r_fem_d = r_stem_declensions["rel_r_fem_d"]
+rel_r_fem_p = r_stem_declensions["rel_r_fem_p"]
 #neuter ṛ-stem declensions
-singdec_nr = ["ṛ", "ṛ", "ṛ", "ṛṇā", "ṛṇe", "ṛṇas", "ṛṇas", "ṛṇi"]
-dualdec_nr = ["ṛṇī", "ṛṇī", "ṛṇī", "ṛbhyām", "ṛbhyām",
-              "ṛbhyām", "ṛṇnos", "ṛṇnos"]
-plurdec_nr = ["ṛṇī", "ṛṇī", "ṛṇī", "ṛbhis", "ṛbhyas",
-              "ṛbhyas", "ṛṇām", "ṛṣu"]
+singdec_nr = r_stem_declensions["singdec_nr"]
+dualdec_nr = r_stem_declensions["dualdec_nr"]
+plurdec_nr = r_stem_declensions["plurdec_nr"]
 
 # combined declensions
 ma_dec = [singdec_ma, dualdec_ma, plurdec_ma]
@@ -173,12 +117,11 @@ agent_r_fem = [agent_r_fem_s, agent_r_fem_d, agent_r_fem_d]
 rel_r_fem = [rel_r_fem_s, rel_r_fem_d, rel_r_fem_p]
 nr_dec = [singdec_nr, dualdec_nr, plurdec_nr]
 
-agent_nouns = ["boddhṛ", "dātṛ", "kartṛ"]
-relationship_nouns = ["pitṛ", "matṛ"]
+#agent_nouns = ["boddhṛ", "dātṛ", "kartṛ"]
+#relationship_nouns = ["pitṛ", "matṛ"]
 
 persons = ["third", "second", "first"]
-pres_ten_end = ["ati", "asi", "āmi", "-", "-", "āvaḥ",
-                "anti", "-", "āmaḥ"]
+pres_ten_end = pres_ten_end["pres_ten_end"]
 
 # function to process and display declensions
 def list_declen(without_stem, declist):
@@ -329,5 +272,7 @@ def romanize(dev_text):
 columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
 
-decline("datṛ", "neut")
+romanize("सत्यमेव जयते")
+
+print(decline("datṛ", "neut"))
 conjugate("nṛt", "IV")
