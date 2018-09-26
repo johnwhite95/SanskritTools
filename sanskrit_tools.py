@@ -137,7 +137,7 @@ def list_declen(without_stem, declist):
                             ['case', 'singular', 'dual', 'plural'], axis=1)
     return(finished)
 
-# need to complete masculine support as well as implement neuter and feminine
+# determine which declenations to use
 def decline(noun, gender):
     stem_cut = noun[:len(noun)-1]
     stem = noun[len(noun)-1:]
@@ -274,5 +274,5 @@ index = ['First','Second','Third']
 
 romanize("सत्यमेव जयते")
 
-print(decline("datṛ", "neut"))
+print(decline("Śiva", "masc"))
 conjugate("nṛt", "IV")
