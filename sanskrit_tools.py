@@ -46,45 +46,13 @@ cases = ["Nom.", "Voc.", "Acc.", "Ins.", "Dat.", "Abl.",
 columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
 
-# masculine a-stem declensions
-singdec_ma = a_stem_declensions["singdec_ma"]
-dualdec_ma = a_stem_declensions["dualdec_ma"]
-plurdec_ma = a_stem_declensions["plurdec_ma"]
-# neuter a-stem declensions
-singdec_na = a_stem_declensions["singdec_na"]
-dualdec_na = a_stem_declensions["dualdec_na"]
-plurdec_na = a_stem_declensions["plurdec_na"]
-
-# masculine i-stem declensions
-singdec_mi = i_stem_declensions["singdec_mi"]
-dualdec_mi = i_stem_declensions["dualdec_mi"]
-plurdec_mi = i_stem_declensions["plurdec_mi"]
-# neuter i-stem declensions
-singdec_ni = i_stem_declensions["singdec_ni"]
-dualdec_ni = i_stem_declensions["dualdec_ni"]
-plurdec_ni = i_stem_declensions["plurdec_ni"]
-# feminine i-stem declensions
-singdec_fi = i_stem_declensions["singdec_fi"]
-dualdec_fi = i_stem_declensions["dualdec_fi"]
-plurdec_fi = i_stem_declensions["plurdec_fi"]
-
-# masculine u-stem declensions
-singdec_mu = u_stem_declensions["singdec_mu"]
-dualdec_mu = u_stem_declensions["dualdec_mu"]
-plurdec_mu = u_stem_declensions["plurdec_mu"]
 # neuter u-stem declensions
-singdec_nu = u_stem_declensions["singdec_nu"]
-dualdec_nu = u_stem_declensions["dualdec_nu"]
-plurdec_nu = u_stem_declensions["plurdec_nu"]
+
 # feminine u-stem declensions
-singdec_fu = u_stem_declensions["singdec_fu"]
-dualdec_fu = u_stem_declensions["dualdec_fu"]
-plurdec_fu = u_stem_declensions["plurdec_fu"]
+
 
 # masculine ṛ-stem agent declensions
-agent_r_masc_s = r_stem_declensions["agent_r_masc_s"]
-agent_r_masc_d = r_stem_declensions["agent_r_masc_d"]
-agent_r_masc_p = r_stem_declensions["agent_r_masc_p"]
+
 # masculine ṛ-stem relationship declensions
 rela_r_masc_s = r_stem_declensions["rela_r_masc_s"]
 rela_r_masc_d = r_stem_declensions["rela_r_masc_d"]
@@ -104,21 +72,18 @@ plurdec_nr = r_stem_declensions["plurdec_nr"]
 
 # combined declensions
 ma_dec = [a_stem_declensions["singdec_ma"], a_stem_declensions["dualdec_ma"], a_stem_declensions["plurdec_ma"]]
-na_dec = [singdec_na, dualdec_na, plurdec_na]
-mi_dec = [singdec_mi, dualdec_mi, plurdec_mi]
-ni_dec = [singdec_ni, dualdec_ni, plurdec_ni]
-fi_dec = [singdec_fi, dualdec_fi, plurdec_fi]
-mu_dec = [singdec_mu, dualdec_mu, plurdec_mu]
-nu_dec = [singdec_nu, dualdec_nu, plurdec_nu]
-fu_dec = [singdec_fu, dualdec_fu, plurdec_fu]
-agent_r_masc = [agent_r_masc_s, agent_r_masc_d, agent_r_masc_d]
+na_dec = [a_stem_declensions["singdec_na"], a_stem_declensions["dualdec_na"], a_stem_declensions["plurdec_na"]]
+mi_dec = [i_stem_declensions["singdec_mi"], i_stem_declensions["dualdec_mi"], i_stem_declensions["plurdec_mi"]]
+ni_dec = [i_stem_declensions["singdec_ni"], i_stem_declensions["dualdec_ni"], i_stem_declensions["plurdec_ni"]]
+fi_dec = [i_stem_declensions["singdec_fi"], i_stem_declensions["dualdec_fi"], i_stem_declensions["plurdec_fi"]]
+mu_dec = [u_stem_declensions["singdec_mu"], u_stem_declensions["dualdec_mu"], u_stem_declensions["plurdec_mu"]]
+nu_dec = [u_stem_declensions["singdec_nu"], u_stem_declensions["dualdec_nu"], u_stem_declensions["plurdec_nu"]]
+fu_dec = [u_stem_declensions["singdec_fu"], u_stem_declensions["dualdec_fu"], u_stem_declensions["plurdec_fu"]]
+agent_r_masc = [r_stem_declensions["agent_r_masc_s"], r_stem_declensions["agent_r_masc_d"], r_stem_declensions["agent_r_masc_p"]]
 rel_r_masc = [rela_r_masc_s, rela_r_masc_d, rela_r_masc_p]
 agent_r_fem = [agent_r_fem_s, agent_r_fem_d, agent_r_fem_d]
 rel_r_fem = [rel_r_fem_s, rel_r_fem_d, rel_r_fem_p]
 nr_dec = [singdec_nr, dualdec_nr, plurdec_nr]
-
-#agent_nouns = ["boddhṛ", "dātṛ", "kartṛ"]
-#relationship_nouns = ["pitṛ", "matṛ"]
 
 persons = ["third", "second", "first"]
 pres_ten_end = pres_ten_end["pres_ten_end"]
@@ -137,7 +102,7 @@ def list_declen(without_stem, declist):
                             ['case', 'singular', 'dual', 'plural'], axis=1)
     return(finished)
 
-# determine which declenations to use
+# determine which declensions to use
 def decline(noun, gender):
     stem_cut = noun[:len(noun)-1]
     stem = noun[len(noun)-1:]
