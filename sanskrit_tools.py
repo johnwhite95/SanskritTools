@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# Import necessary libraries
 import pandas as pd
 import json
 
+# Load data
 orthography = json.load(open("./data/orthography.json", "r"))
 sandhi_data = json.load(open("./data/sandhi_data.json", "r"))
 a_stem_declensions = json.load(open("./data/a_stem_declensions.json", "r"))
@@ -11,8 +13,12 @@ i_stem_declensions = json.load(open("./data/i_stem_declensions.json", "r"))
 u_stem_declensions = json.load(open("./data/u_stem_declensions.json", "r"))
 r_stem_declensions = json.load(open("./data/r_stem_declensions.json", "r"))
 agent_nouns = open("./data/agent_nouns.csv", "r")
+agent_nouns = agent_nouns.read()
 relationship_nouns = open("./data/relationship_nouns.csv", "r")
+relationship_nouns = relationship_nouns.read()
 pres_ten_end = json.load(open("./data/pres_ten_end.json", "r"))
+verb_classes = open("./data/verbs_classes.csv", "r")
+verb_classes = verb_classes.read()
 
 # text database
 D_vowel = orthography["D_vowel"]
@@ -42,33 +48,11 @@ joins22 = sandhi_data["joins22"]
 
 cases = ["Nom.", "Voc.", "Acc.", "Ins.", "Dat.", "Abl.",
          "Gen.", "Loc."]
-
 columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
+persons = ["third", "second", "first"]
 
-# neuter u-stem declensions
-
-# feminine u-stem declensions
-
-
-# masculine ṛ-stem agent declensions
-
-# masculine ṛ-stem relationship declensions
-rela_r_masc_s = r_stem_declensions["rela_r_masc_s"]
-rela_r_masc_d = r_stem_declensions["rela_r_masc_d"]
-rela_r_masc_p = r_stem_declensions["rela_r_masc_p"]
-#feminine ṛ-stem agent declensions
-agent_r_fem_s = r_stem_declensions["agent_r_fem_s"]
-agent_r_fem_d = r_stem_declensions["agent_r_fem_d"]
-agent_r_fem_p = r_stem_declensions["agent_r_fem_p"]
-#feminine ṛ-stem relationship declensions
-rel_r_fem_s = r_stem_declensions["rel_r_fem_s"]
-rel_r_fem_d = r_stem_declensions["rel_r_fem_d"]
-rel_r_fem_p = r_stem_declensions["rel_r_fem_p"]
-#neuter ṛ-stem declensions
-singdec_nr = r_stem_declensions["singdec_nr"]
-dualdec_nr = r_stem_declensions["dualdec_nr"]
-plurdec_nr = r_stem_declensions["plurdec_nr"]
+pres_ten_end = pres_ten_end["pres_ten_end"]
 
 # combined declensions
 ma_dec = [a_stem_declensions["singdec_ma"], a_stem_declensions["dualdec_ma"], a_stem_declensions["plurdec_ma"]]
@@ -80,13 +64,11 @@ mu_dec = [u_stem_declensions["singdec_mu"], u_stem_declensions["dualdec_mu"], u_
 nu_dec = [u_stem_declensions["singdec_nu"], u_stem_declensions["dualdec_nu"], u_stem_declensions["plurdec_nu"]]
 fu_dec = [u_stem_declensions["singdec_fu"], u_stem_declensions["dualdec_fu"], u_stem_declensions["plurdec_fu"]]
 agent_r_masc = [r_stem_declensions["agent_r_masc_s"], r_stem_declensions["agent_r_masc_d"], r_stem_declensions["agent_r_masc_p"]]
-rel_r_masc = [rela_r_masc_s, rela_r_masc_d, rela_r_masc_p]
-agent_r_fem = [agent_r_fem_s, agent_r_fem_d, agent_r_fem_d]
-rel_r_fem = [rel_r_fem_s, rel_r_fem_d, rel_r_fem_p]
-nr_dec = [singdec_nr, dualdec_nr, plurdec_nr]
+rel_r_masc = [r_stem_declensions["rela_r_masc_s"], r_stem_declensions["rela_r_masc_d"], r_stem_declensions["rela_r_masc_p"]]
+agent_r_fem = [r_stem_declensions["agent_r_fem_s"], r_stem_declensions["agent_r_fem_d"], r_stem_declensions["agent_r_fem_p"]]
+rel_r_fem = [r_stem_declensions["rel_r_fem_s"], r_stem_declensions["rel_r_fem_d"], r_stem_declensions["rel_r_fem_p"]]
+nr_dec = [r_stem_declensions["singdec_nr"], r_stem_declensions["dualdec_nr"], r_stem_declensions["plurdec_nr"]]
 
-persons = ["third", "second", "first"]
-pres_ten_end = pres_ten_end["pres_ten_end"]
 
 # function to process and display declensions
 def list_declen(without_stem, declist):
@@ -237,7 +219,10 @@ def romanize(dev_text):
 columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
 
+# <-> Some examples <->
 romanize("सत्यमेव जयते")
 
 print(decline("Śiva", "masc"))
-conjugate("nṛt", "IV")
+print(conjugate("nṛt", "IV"))
+
+print(verb_classes)
