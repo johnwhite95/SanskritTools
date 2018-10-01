@@ -1,6 +1,6 @@
 import json
 
-sandhi_data = json.load(open("sandhi.json", "r"))
+sandhi_data = json.load(open("./data/sandhi.json", "r"))
 
 def sandhi(x):
     return sandhi_data.get(x, " | sandhi error | ") 
