@@ -219,7 +219,7 @@ def romanize(dev_text):
 columns = ['Singular','Dual','Plural']
 index = ['First','Second','Third']
 
-# <-> Some examples <->
+# Some examples
 romanize("सत्यमेव जयते")
 
 print(decline("Śiva", "masc"))
